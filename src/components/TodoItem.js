@@ -6,9 +6,6 @@ import { connect } from 'react-redux';
 export class TodoItem extends Component {
   getStyle = () => {
     return {
-      background: '#f4f4f4',
-      padding: '10px',
-      borderBottom: '1px #ccc dotted',
       textDecoration: this.props.todo.completed ? 'line-through' : 'none'
     }
   }
@@ -25,12 +22,12 @@ export class TodoItem extends Component {
   render() {
     const { id, title, completed } = this.props.todo;
     return (
-      <div style={this.getStyle()}>
-        <p>
+      <div>
+        <p style={this.getStyle()}>
           <input type="checkbox" onChange={this.markComplete.bind(this, id)} checked={completed} /> {' '}
           {title}
-          <button onClick={this.delTodo.bind(this, id)} style={btnStyle}>x</button>
         </p>
+        <button onClick={this.delTodo.bind(this, id)} >x</button>
       </div>
     )
   }
@@ -41,16 +38,6 @@ TodoItem.propTypes = {
   todo: PropTypes.object.isRequired,
   deleteTodo: PropTypes.func.isRequired,
   markCompleteTodo: PropTypes.func.isRequired,
-}
-
-const btnStyle = {
-  background: '#ff0000',
-  color: '#fff',
-  border: 'none',
-  padding: '5px 9px',
-  borderRadius: '50%',
-  cursor: 'pointer',
-  float: 'right'
 }
 
 export default connect(null, { deleteTodo, markCompleteTodo })(TodoItem);
