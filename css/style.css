@@ -1,77 +1,83 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: black;
-    color: white;
+  background-color: black;
+  color: white;
 }
 
-header{
-    padding: 1rem;
+header {
+  padding: 1rem;
 }
 
 header h1 {
-    text-align: center;
+  text-align: center;
 }
 
 .container {
-    width: 70%;
-    margin: 0 auto;
+  width: 70%;
+  margin: 0 auto;
 }
 
 form {
-    display: flex;
-    margin: 1rem 0;
+  display: flex;
+  margin: 1rem 0;
 }
 
-form input[type=text] {
-    flex: 11;
-    padding: 0.5rem; 
+form input[type="text"] {
+  flex: 11;
+  padding: 0.5rem;
 }
 
-form input[type=submit] {
-    flex: 1;
-    border: none;
-    padding: 0.5rem;
-    cursor: pointer;
-    background-color: #333333;
-    color: white;
+form input[type="submit"] {
+  flex: 1;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  background-color: #333333;
+  color: white;
 }
 
-form input[type=submit]:hover {
-    box-shadow: 0px 0px 0px 1px rgba(255,255,255,1);
+form input[type="submit"]:hover {
+  box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 1);
 }
 
-.container div{
-    display: flex;
-    padding: 1rem;
-    border-bottom: #555 1px solid;
+.container .todo-item {
+  display: flex;
+  padding: 1rem;
+  border-bottom: #555 1px solid;
 }
 
-.container div > *{
-    margin-right: 1rem;
+.container .todo-item > input[type="checkbox"] {
+  margin-top: 6px;
+  margin-right: 1rem;
 }
 
-
-.container div p{
-    flex:1;
+.container .todo-item > p {
+  margin-right: 1rem;
+  flex: 1;
 }
 
-
-.container div button{
-    border-radius: 1rem;
-    width: 2rem;
-    height: 2rem;
-    border: none;
-    color: white;
-    background-color: #af0000;
-    cursor: pointer;
-    font-size: 1rem;
+.container .todo-item button {
+  border-radius: 1rem;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  color: white;
+  background-color: #af0000;
+  cursor: pointer;
+  font-size: 1rem;
 }
 
-.container div button:hover{
-    background-color: #333333;
+.container .todo-item button:hover {
+  background-color: #333333;
 }
+
+@media (max-width: 576px) { 
+    .container{
+        width: 95%;
+    }
+ }
