@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { deleteTodo, markCompleteTodo } from '../actions/todosActions';
+import { connect } from 'react-redux';
 
 export class TodoItem extends Component {
   getStyle = () => {
@@ -11,14 +13,23 @@ export class TodoItem extends Component {
     }
   }
 
+  delTodo = (id) => {
+    this.props.deleteTodo(id);
+  };
+
+  // Toggle Complete
+  markComplete = (id) => {
+    this.props.markCompleteTodo(id);
+  };
+
   render() {
-    const { id, title } = this.props.todo;
+    const { id, title, completed } = this.props.todo;
     return (
       <div style={this.getStyle()}>
         <p>
-          <input type="checkbox" onChange={this.props.markComplete.bind(this, id)} /> {' '}
-          { title }
-          <button onClick={this.props.delTodo.bind(this, id)} style={btnStyle}>x</button>
+          <input type="checkbox" onChange={this.markComplete.bind(this, id)} checked={completed} /> {' '}
+          {title}
+          <button onClick={this.delTodo.bind(this, id)} style={btnStyle}>x</button>
         </p>
       </div>
     )
@@ -28,8 +39,8 @@ export class TodoItem extends Component {
 // PropTypes
 TodoItem.propTypes = {
   todo: PropTypes.object.isRequired,
-  markComplete: PropTypes.func.isRequired,
-  delTodo: PropTypes.func.isRequired,
+  deleteTodo: PropTypes.func.isRequired,
+  markCompleteTodo: PropTypes.func.isRequired,
 }
 
 const btnStyle = {
@@ -42,4 +53,4 @@ const btnStyle = {
   float: 'right'
 }
 
-export default TodoItem
+export default connect(null, { deleteTodo, markCompleteTodo })(TodoItem);
